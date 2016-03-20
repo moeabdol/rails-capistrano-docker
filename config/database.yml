@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username:
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: rails_capistrano_docker_demo_development
+
+test:
+  <<: *default
+  database: rails_capistrano_docker_demo_test
+
+production:
+  <<: *default
+  database: rails_capistrano_docker_demo_production
+  username: rails_capistrano_docker_demo
+  password: <%= ENV['RAILS_CAPISTRANO_DOCKER_DEMO_DATABASE_PASSWORD'] %>
